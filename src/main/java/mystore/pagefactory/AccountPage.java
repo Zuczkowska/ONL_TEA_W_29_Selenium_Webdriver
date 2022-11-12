@@ -21,10 +21,13 @@ public class AccountPage {
     WebElement accountName;
 
     public String getIdentityLinkText(){
+
         return informationLink.getText();
     }
 
     public String getAccountNameText(){
+
         return accountName.getText();
     }
 }
+

@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-
     private final WebDriver driver;
 
     private final String URL = "https://mystore-testlab.coderslab.pl/index.php";
