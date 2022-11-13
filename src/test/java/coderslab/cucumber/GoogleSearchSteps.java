@@ -26,20 +26,20 @@ public class GoogleSearchSteps {
         driver.manage().window().maximize();
         driver.get("https://www.google.pl/");
     }
-    @When("a keyword selenium is entered in input field")
-    public void enterKeyword(){
+    @When("^a keyword (.*) is entered in input field") //dziwki gwiazdce keyword przyjmnie słowo selenium
+    public void enterKeyword(String keyword){
         WebElement cookiesBtn = driver.findElement(By.id("L2AGLb"));
         cookiesBtn.click();
         WebElement element = driver.findElement(By.name("q"));
         element.clear();
-        element.sendKeys("selenium");
+        element.sendKeys(keyword);
         element.submit();
     }
-    @Then("the first one should contain selenium")
-    public void theFirstOneShouldContainKeyword(){
+    @Then("^the first one should contain (.*)")
+    public void theFirstOneShouldContainKeyword(String keyword){
         List<WebElement> searchResults = driver.findElements(By.cssSelector("a>h3"));
         String linkText = searchResults.get(0).getText();
-        Assertions.assertThat(linkText).as("Selenium link text").containsIgnoringCase("selenium");
+        Assertions.assertThat(linkText).as("Selenium link text").containsIgnoringCase(keyword);
     }
     @And("close browser")
     public void closeBrowser(){
